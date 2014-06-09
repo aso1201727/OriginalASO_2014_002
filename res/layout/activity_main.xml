@@ -28,32 +28,32 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/BtnMente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="114dp"
         android:layout_weight="5311.49"
-        android:text="Button" />
+        android:text="メンテ" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/BtnTouroku"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
         android:layout_alignRight="@+id/linearLayout2"
-        android:text="Button" />
+        android:text="登録" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/BtnCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
         android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/button2"
-        android:text="Button" />
+        android:text="ひとことチェック" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
