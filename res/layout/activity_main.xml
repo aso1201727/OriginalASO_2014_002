@@ -10,18 +10,17 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/BtnMente"
         android:layout_below="@+id/linearLayout4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
         android:orientation="vertical" >
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/edtMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-            android:layout_weight="84492.02"
+            android:layout_weight="86975.30"
             android:ems="10"
             android:inputType="textMultiLine" />
 
@@ -36,24 +35,6 @@
         android:layout_marginBottom="114dp"
         android:layout_weight="5311.49"
         android:text="メンテ" />
-
-    <Button
-        android:id="@+id/BtnTouroku"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/linearLayout2"
-        android:text="登録" />
-
-    <Button
-        android:id="@+id/BtnCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignRight="@+id/button2"
-        android:layout_below="@+id/button2"
-        android:text="ひとことチェック" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -89,5 +70,23 @@
             android:layout_marginTop="15dp"
             android:text="一言を登録" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/BtnTouroku"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BtnMente"
+        android:layout_alignBottom="@+id/BtnMente"
+        android:layout_alignRight="@+id/linearLayout2"
+        android:text="登録" />
+
+    <Button
+        android:id="@+id/BtnCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/BtnMente"
+        android:layout_alignRight="@+id/BtnTouroku"
+        android:layout_below="@+id/BtnTouroku"
+        android:text="ひとことチェック" />
 
 </RelativeLayout>

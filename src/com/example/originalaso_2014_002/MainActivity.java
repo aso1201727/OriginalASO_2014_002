@@ -3,12 +3,15 @@ package com.example.originalaso_2014_002;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
@@ -34,7 +37,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		// ボタンをIDで探してボタンを作る
 		Button BtnTouroku = (Button)findViewById(R.id.BtnTouroku);
 		// ボタン変数をリスナーを登録する。
-		BtnCheck.setOnClickListener(this);
+		BtnTouroku.setOnClickListener(this);
+		
+		// ボタンをIDで探してボタンを作る
+		Button BtnMente = (Button)findViewById(R.id.BtnMente);
+		// ボタン変数をリスナーを登録する。
+		BtnMente.setOnClickListener(this);
 		
 		if(sdb == null) {
 			helper = new MySQLiteOpenHelper(getApplicationContext());
@@ -44,11 +52,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			//異常終了
 			return;
 		}
-				
-		// ボタンをIDで探してボタンを作る
-		Button BtnMente = (Button)findViewById(R.id.BtnMente);
-		// ボタン変数をリスナーを登録する。
-		BtnCheck.setOnClickListener(this);
 	}
 
 	@Override
@@ -60,7 +63,24 @@ public class MainActivity extends Activity implements OnClickListener {
 				startActivity(new Intent(MainActivity.this, HyoujiActivity.class));
 				break;
 			case R.id.BtnTouroku:
+				//入力内容を取り出す
+				EditText etv = (EditText)findViewById(R.id.edtMsg);
+				String inputMsg = etv.getText().toString();
+				String sqlstr = "insert into Hitokoto (phrase) values('"+ inputMsg + "')";
 				
+				try {
+					//トランザクションの開始
+					sdb.beginTransaction();
+					sdb.execSQL(sqlstr);
+					//トランザクションの成功
+					sdb.setTransactionSuccessful();
+				} catch (SQLException e) {
+					Log.e("ERROR",e.toString());
+				} finally {
+					//トランザクションの終了
+					sdb.endTransaction();
+					etv.setText("");
+				}
 				break;
 			case R.id.BtnMente:
 				startActivity(new Intent(MainActivity.this, HyoujiActivity.class));
