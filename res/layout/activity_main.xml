@@ -11,30 +11,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/BtnMente"
-        android:layout_below="@+id/linearLayout4"
+        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/edtMsg"
+        <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="33295.23"
+            android:src="@drawable/umi" />
+
+        <EditText
+            android:id="@+id/edtMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-            android:layout_weight="86975.30"
             android:ems="10"
             android:inputType="textMultiLine" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/BtnMente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="114dp"
-        android:layout_weight="5311.49"
-        android:text="メンテ" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -62,31 +58,42 @@
         android:layout_marginTop="14dp"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
-            android:text="一言を登録" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/BtnTouroku"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/BtnMente"
-        android:layout_alignBottom="@+id/BtnMente"
-        android:layout_alignRight="@+id/linearLayout2"
-        android:text="登録" />
+        android:layout_below="@+id/linearLayout3"
+        android:layout_toLeftOf="@+id/linearLayout3"
+        android:text="一言を登録" />
 
     <Button
         android:id="@+id/BtnCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/BtnMente"
+        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/BtnTouroku"
-        android:layout_below="@+id/BtnTouroku"
+        android:layout_marginBottom="16dp"
         android:text="ひとことチェック" />
+
+    <Button
+        android:id="@+id/BtnTouroku"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BtnCheck"
+        android:layout_alignRight="@+id/linearLayout2"
+        android:text="登録" />
+
+    <Button
+        android:id="@+id/BtnMente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BtnTouroku"
+        android:layout_alignBottom="@+id/BtnTouroku"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_weight="5311.49"
+        android:text="メンテ" />
 
 </RelativeLayout>

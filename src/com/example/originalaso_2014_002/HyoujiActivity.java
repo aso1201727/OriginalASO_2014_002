@@ -1,10 +1,9 @@
 package com.example.originalaso_2014_002;
 
 import android.app.Activity;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class HyoujiActivity extends Activity {
 
@@ -13,31 +12,17 @@ public class HyoujiActivity extends Activity {
 		// TODO �����������ꂽ���\�b�h�E�X�^�u
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hyouji);
-		
-		/**
-		 * @param SQLiteDatabase インサート先のDBのインスタンス変数
-		 * @param inputMeg インサートするメッセージ
-		 */
-		public String selectHitokoto(SQLiteDatabase db) {
-			String rtString = null;
-			
-			String sqlstr = "select _id, phrase form Hitokoto ORDER BY RANDOM(); ";
-				try {
-					//トランザクションの開始
-					SQLiteCursor corsor = (SQLiteCursor)db.rawQuery(sqlstr,null);
-					if(corsor.getCount()!=0) {
-						//カーソルの位置を先頭にする
-						corsor.moveToFirst();
-						rtString = corsor.getString(1);
-					}
-				} catch (SQLException e) {
-					
-				} finally {
-					
-				}
-		}
 	}
-	
-	
 
+	@Override
+	protected void onResume() {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onResume();
+		
+		Intent intent = this.getIntent();
+		String strHitokoto = intent.getStringExtra("hitokoto");
+		
+		TextView txvHITOKOTO = (TextView)findViewById(R.id.etx_hitokoto);
+		txvHITOKOTO.setText(strHitokoto);
+	}
 }

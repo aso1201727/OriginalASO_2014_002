@@ -25,6 +25,9 @@
         <activity android:name="com.example.originalaso_2014_002.HyoujiActivity" android:label="@string/app_name">
         	<intent-filter>
         		<action android:name="android.intent.action.MAIN"></action>
-        		<category android:name="android.intent.category.LAUNCHER"></category></intent-filter></activity></application>
+        		<category android:name="android.intent.category.LAUNCHER"></category></intent-filter></activity>
+        <activity android:name="com.example.originalaso_2014_002.MenteActivity" android:label="@string/app_name">
+        	<action android:name="android.intent.action.MAIN"></action>
+        	<category android:name="android.intent.category.LAUNCHER"></category></activity></application>
 
 </manifest>

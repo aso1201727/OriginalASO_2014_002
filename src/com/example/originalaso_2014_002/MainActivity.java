@@ -1,6 +1,5 @@
 package com.example.originalaso_2014_002;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.SQLException;
@@ -60,8 +59,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		switch(v.getId()){
 			case R.id.BtnCheck:
-				startActivity(new Intent(MainActivity.this, HyoujiActivity.class));
+				
+				String strHitokoto = helper.selectHitokoto(sdb);
+				
+				Intent intent = new Intent(MainActivity.this, HyoujiActivity.class);
+				intent.putExtra("hitokoto",strHitokoto);
+				
+				startActivity(intent);
 				break;
+				
 			case R.id.BtnTouroku:
 				//入力内容を取り出す
 				EditText etv = (EditText)findViewById(R.id.edtMsg);
