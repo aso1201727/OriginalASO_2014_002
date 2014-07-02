@@ -36,18 +36,17 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	 * @param SQLiteDatabase インサート先のDBのインスタンス変数
 	 * @param inputMeg インサートするメッセージ
 	 */
-	public String selectHitokoto(SQLiteDatabase db) {
+	public SQLiteCursor selectHitokoto(SQLiteDatabase db) {
 		
-		String rtString = null;
+		SQLiteCursor corsor = null;
 		
 		String sqlstr = "select _id, phrase from Hitokoto ORDER BY RANDOM(); ";
 			try {
 				//トランザクションの開始
-				SQLiteCursor corsor = (SQLiteCursor)db.rawQuery(sqlstr,null);
+				corsor = (SQLiteCursor)db.rawQuery(sqlstr,null);
 				if(corsor.getCount()!=0) {
 					//カーソルの位置を先頭にする
 					corsor.moveToFirst();
-					rtString = corsor.getString(1);
 				}
 				corsor.close();
 				
@@ -56,7 +55,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 			} finally {
 				
 			}
-			return rtString;
+			return corsor;
 	}
 	/**
 	 * @param SQLiteDatabase インサート先のDBのインスタンス変数
