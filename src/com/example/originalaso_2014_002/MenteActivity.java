@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 public class MenteActivity extends Activity implements View.OnClickListener, OnItemClickListener {
 	
@@ -39,7 +41,7 @@ public class MenteActivity extends Activity implements View.OnClickListener, OnI
 		btnDelete.setOnClickListener(this);
 		btnBack.setOnClickListener(this);
 		
-		lstHitokoto.setOnClickListener(this);
+		lstHitokoto.setOnItemClickListener(this);
 		
 		this.setDBValuetoList(lstHitokoto);
 	}
@@ -56,7 +58,16 @@ public class MenteActivity extends Activity implements View.OnClickListener, OnI
 			Log.e("ERROR", e.toString());
 		}
 		
-		cursor = this.helper.selectHitokoto(sdb);
+		cursor = this.helper.selectHitokotoList(sdb);
+		
+		int db_layout = android.R.layout.simple_list_item_activated_1;
+		String[] from = {"phrase"};
+		int[] to = new int[]{android.R.id.text1};
+		
+		SimpleCursorAdapter adapter =
+			new SimpleCursorAdapter(this,db_layout,cursor,from,to,0);
+		
+		lstHitokoto.setAdapter(adapter);
 	}
 
 	@Override
@@ -82,10 +93,28 @@ public class MenteActivity extends Activity implements View.OnClickListener, OnI
 		case R.id.Delete:
 			
 			if(this.selectedID != -1) {
-				//this.deleteFromHitokoto(this.selectedID);
+				this.deleteFromHitokoto(this.selectedID);
 				ListView lstHitokoto = (ListView)findViewById(R.id.lstView);
-				
+				this.setDBValuetoList(lstHitokoto);
+				this.selectedID = -1;
+				this.lastPosition = -1;
+			} else {
+				Toast.makeText(MenteActivity.this, "削除する行を選んでください", Toast.LENGTH_LONG);
 			}
+		break;
+		case R.id.Back:
+			finish();
 		}
+	}
+	private void deleteFromHitokoto(int id) {
+		if(sdb == null) {
+			helper = new MySQLiteOpenHelper(getApplicationContext());
+		} try {
+			sdb = helper.getWritableDatabase();
+		} catch(SQLiteException e) {
+			Log.e("ERROR", e.toString());
+		}
+		
+		this.helper.DeleteHitokoto(sdb, id);
 	}
 }

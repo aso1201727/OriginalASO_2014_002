@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		switch(v.getId()){
 			case R.id.BtnCheck:
 				
-				String strHitokoto = helper.selectHitokoto(sdb);
+				String strHitokoto = helper.selectRandomHitokoto(sdb);
 				
 				Intent intent = new Intent(MainActivity.this, HyoujiActivity.class);
 				intent.putExtra("hitokoto",strHitokoto);
@@ -89,7 +89,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				}
 				break;
 			case R.id.BtnMente:
-				startActivity(new Intent(MainActivity.this, HyoujiActivity.class));
+				startActivity(new Intent(MainActivity.this, MenteActivity.class));
 				break;
 		}
 	}

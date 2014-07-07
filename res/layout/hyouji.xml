@@ -5,34 +5,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/kakugen" />
-
     <GridLayout
+        android:id="@+id/gridLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/imageView1"
         android:layout_below="@+id/imageView1"
-        android:layout_marginTop="25dp" >
+        android:layout_marginTop="59dp"
+        android:columnCount="1" >
 
         <EditText
             android:id="@+id/etx_hitokoto"
-            android:layout_height="144dp"
+            android:layout_height="101dp"
             android:layout_gravity="fill_horizontal"
             android:ems="10"
             android:inputType="textMultiLine" >
 
             <requestFocus />
         </EditText>
-
     </GridLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:src="@drawable/kakugen" />
 
 </RelativeLayout>

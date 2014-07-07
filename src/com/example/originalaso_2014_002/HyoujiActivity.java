@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class HyoujiActivity extends Activity {
+	
+	private static final String TAG = "LifeCycle";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +15,7 @@ public class HyoujiActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hyouji);
 	}
-
+	
 	@Override
 	protected void onResume() {
 		// TODO 自動生成されたメソッド・スタブ
@@ -24,5 +26,6 @@ public class HyoujiActivity extends Activity {
 		
 		TextView txvHITOKOTO = (TextView)findViewById(R.id.etx_hitokoto);
 		txvHITOKOTO.setText(strHitokoto);
+		
 	}
 }

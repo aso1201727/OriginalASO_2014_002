@@ -36,17 +36,18 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	 * @param SQLiteDatabase インサート先のDBのインスタンス変数
 	 * @param inputMeg インサートするメッセージ
 	 */
-	public SQLiteCursor selectHitokoto(SQLiteDatabase db) {
+	public String selectRandomHitokoto(SQLiteDatabase db) {
 		
-		SQLiteCursor corsor = null;
+		String rtString = null;
 		
 		String sqlstr = "select _id, phrase from Hitokoto ORDER BY RANDOM(); ";
 			try {
 				//トランザクションの開始
-				corsor = (SQLiteCursor)db.rawQuery(sqlstr,null);
+				SQLiteCursor corsor = (SQLiteCursor)db.rawQuery(sqlstr,null);
 				if(corsor.getCount()!=0) {
 					//カーソルの位置を先頭にする
 					corsor.moveToFirst();
+					rtString = corsor.getString(1);
 				}
 				corsor.close();
 				
@@ -55,7 +56,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 			} finally {
 				
 			}
-			return corsor;
+			return rtString;
 	}
 	/**
 	 * @param SQLiteDatabase インサート先のDBのインスタンス変数
@@ -76,5 +77,30 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 			} finally {
 				db.endTransaction();
 			}
+	}
+	/**
+	 * @param SQLiteDatabase インサート先のDBのインスタンス変数
+	 * @param inputMeg インサートするメッセージ
+	 */
+	public SQLiteCursor selectHitokotoList(SQLiteDatabase db) {
+		
+		SQLiteCursor corsor = null;
+		
+		String sqlstr = "select _id, phrase from Hitokoto ORDER BY _id; ";
+			try {
+				//トランザクションの開始
+				corsor = (SQLiteCursor)db.rawQuery(sqlstr,null);
+				if(corsor.getCount()!=0) {
+					//カーソルの位置を先頭にする
+					corsor.moveToFirst();
+				}
+				
+				
+			} catch (SQLException e) {
+				Log.e("ERROR", e.toString());
+			} finally {
+				
+			}
+			return corsor;
 	}
 }
